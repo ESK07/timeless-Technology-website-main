@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+can you remove our expertise section on this import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  Code,
+  Smartphone,
+  Cloud,
+  Brain,
   Shield,
   Users,
   Award,
@@ -57,6 +61,33 @@ const AnimatedCounter = ({ end, suffix = "", duration = 2000 }) => {
    Home Component
 ========================= */
 const Home = () => {
+  const features = [
+    {
+      icon: <Code className="h-8 w-8 text-green-500" />,
+      title: "Custom Development",
+      description:
+        "Tailored software solutions built to meet your unique business requirements.",
+    },
+    {
+      icon: <Smartphone className="h-8 w-8 text-green-500" />,
+      title: "Mobile Applications",
+      description:
+        "Native and cross-platform mobile apps that deliver exceptional user experiences.",
+    },
+    {
+      icon: <Cloud className="h-8 w-8 text-green-500" />,
+      title: "Cloud Solutions",
+      description:
+        "Scalable cloud infrastructure and migration services for modern businesses.",
+    },
+    {
+      icon: <Brain className="h-8 w-8 text-green-500" />,
+      title: "AI Integration",
+      description:
+        "Intelligent automation and AI-powered features to transform your operations.",
+    },
+  ];
+
   const services = [
     { title: "Microsoft 365", image: "/images/microsoft365.jpg" },
     { title: "Local Area Network", image: "/images/lan.jpg" },
@@ -94,16 +125,15 @@ const Home = () => {
             of Technology
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            We create innovative digital solutions that empower businesses to
-            thrive in the modern world. Our digital offers start from the needs
-            and wants of you, our customer.
+            We create innovative digital solutions that empower businesses to thrive in the modern world.
+            Our digital offers start from the needs and wants of you, our customer. As technology advances and users evolve, we tailor our service scope to meet the complex demands of businesses and users. We strive to ensure that our solutions are developed to fit into your current ways of working, so, you need not to change how you work in order to employ the system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:scale-105 transition"
             >
-              Get Started
+           <span>Get Started</span>
             </Link>
             <Link
               to="/portfolio"
@@ -132,84 +162,125 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Features Section */}
       <section className="py-20 bg-green-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h3 className="text-3xl font-bold text-center mb-10">
-            Our Services
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our Expertise
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We specialize in cutting-edge technologies to deliver solutions that drive your business forward.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg hover:scale-105 transition"
+                className="bg-white p-8 rounded-xl shadow-lg hover:scale-105 transition"
               >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-48 w-full object-cover"
-                />
-                <div className="p-6 text-center font-semibold">
-                  {service.title}
-                </div>
+                {feature.icon}
+                <h3 className="text-xl font-semibold mt-6 mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
+          </div>
+
+          {/* Services */}
+          <div className="mt-20">
+            <h3 className="text-3xl font-bold text-center mb-10">
+              Our Services
+            </h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-lg hover:scale-105 transition"
+                >
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-6 text-center font-semibold">
+                    {service.title}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
                 Why Choose Timeless Technology?
               </h2>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                We combine technical expertise with business acumen to deliver solutions that not only work flawlessly but also drive real business results.
+              </p>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="h-6 w-6 text-green-500" />
-                    <span>{benefit}</span>
+                    <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
-
+            
             <div className="grid grid-cols-2 gap-6">
-              <InfoCard icon={<Shield />} title="Secure & Reliable" />
-              <InfoCard icon={<Users />} title="Expert Team" />
-              <InfoCard icon={<Award />} title="Award Winning" />
-              <InfoCard icon={<ArrowRight />} title="Future Ready" />
+              <div className="bg-green-50 backdrop-blur-sm border border-green-200 rounded-xl p-6 text-center hover:bg-green-100 transition-all duration-300">
+                <Shield className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Secure & Reliable</h3>
+                <p className="text-gray-600 text-sm">Enterprise-grade security standards</p>
+              </div>
+              <div className="bg-green-50 backdrop-blur-sm border border-green-200 rounded-xl p-6 text-center hover:bg-green-100 transition-all duration-300">
+                <Users className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Expert Team</h3>
+                <p className="text-gray-600 text-sm">Skilled professionals at your service</p>
+              </div>
+              <div className="bg-green-50 backdrop-blur-sm border border-green-200 rounded-xl p-6 text-center hover:bg-green-100 transition-all duration-300">
+                <Award className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Award Winning</h3>
+                <p className="text-gray-600 text-sm">Recognized for excellence</p>
+              </div>
+              <div className="bg-green-50 backdrop-blur-sm border border-green-200 rounded-xl p-6 text-center hover:bg-green-100 transition-all duration-300">
+                <ArrowRight className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Future Ready</h3>
+                <p className="text-gray-600 text-sm">Built for tomorrow's challenges</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-green-50 text-center">
-        <h2 className="text-4xl font-bold mb-6">
-          Ready to Transform Your Business?
-        </h2>
-        <Link
-          to="/contact"
-          className="inline-flex items-center bg-green-600 text-white px-8 py-4 rounded-lg hover:scale-105 transition"
-        >
-          Start Your Project
-          <ArrowRight className="ml-2" />
-        </Link>
+      {/* CTA Section */}
+      <section className="py-20 bg-green-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            Let's discuss how we can help you achieve your technology goals and stay ahead of the competition.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 space-x-2"
+          >
+            <span>Start Your Project</span>
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
       </section>
     </div>
   );
 };
-
-const InfoCard = ({ icon, title }) => (
-  <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center hover:bg-green-100 transition">
-    <div className="text-green-500 mx-auto mb-4 h-12 w-12">
-      {icon}
-    </div>
-    <h3 className="font-semibold">{title}</h3>
-  </div>
-);
 
 export default Home;
