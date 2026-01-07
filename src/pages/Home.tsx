@@ -1,4 +1,4 @@
-can you remove our expertise section on this import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -161,32 +161,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-green-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Expertise
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We specialize in cutting-edge technologies to deliver solutions that drive your business forward.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white p-8 rounded-xl shadow-lg hover:scale-105 transition"
-              >
-                {feature.icon}
-                <h3 className="text-xl font-semibold mt-6 mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
 
           {/* Services */}
           <div className="mt-20">
